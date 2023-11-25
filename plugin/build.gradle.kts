@@ -11,6 +11,7 @@ plugins {
 
     // Apply the Kotlin JVM plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.9.10"
+    `maven-publish`
 }
 
 repositories {
@@ -19,6 +20,13 @@ repositories {
 }
 
 dependencies {
+
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.21")
+    implementation("com.google.api-client:google-api-client:1.31.2")
+    implementation("com.google.oauth-client:google-oauth-client-jetty:1.34.1")
+    implementation("com.google.apis:google-api-services-calendar:v3-rev411-1.25.0")
+    implementation("com.google.apis:google-api-services-sheets:v4-rev612-1.25.0")
+
     // Use the Kotlin JUnit 5 integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
@@ -27,8 +35,9 @@ dependencies {
 
 gradlePlugin {
     // Define the plugin
-    val greeting by plugins.creating {
-        id = "spread.sheet.reader.greeting"
+    val output by plugins.creating {
+        id = "spread.sheet.reader.output"
+        version = "1.0"
         implementationClass = "spread.sheet.reader.SpreadSheetReaderPlugin"
     }
 }

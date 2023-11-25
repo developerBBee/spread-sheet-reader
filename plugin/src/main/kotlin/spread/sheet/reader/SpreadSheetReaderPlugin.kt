@@ -12,10 +12,6 @@ import org.gradle.api.Plugin
 class SpreadSheetReaderPlugin: Plugin<Project> {
     override fun apply(project: Project) {
         // Register a task
-        project.tasks.register("greeting") { task ->
-            task.doLast {
-                println("Hello from plugin 'spread.sheet.reader.greeting'")
-            }
-        }
+        project.tasks.register("output", SpreadSheetReader::class.java) {}
     }
 }
